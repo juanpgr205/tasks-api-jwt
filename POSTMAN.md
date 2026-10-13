@@ -21,7 +21,7 @@ El token vencido también se verifica automáticamente en `npm test`, sin espera
 
 ## Entrega
 
-- Enlace a un repositorio público con la API, SQL, `.env.example` y colección.
+- Enlace a un repositorio público con la API, SQL y colección.
 - Captura real de la colección de peticiones HTTP en Postman.
 
 Referencia: [importar datos en Postman](https://learning.postman.com/docs/getting-started/importing-and-exporting/importing-data/).

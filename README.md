@@ -6,7 +6,7 @@ Tarea de Diseño de Software: pasos **5 (CRUD y validación), 6 (Swagger) y 7 (J
 
 1. Instalar Node.js 22 o superior.
 2. En el SQL Editor de Supabase, ejecutar `supabase/01_tasks.sql` y `supabase/02_auth.sql`. Si `tasks` ya existe con los datos iniciales, ejecutar solo el segundo script: el primero vuelve a insertar ejemplos.
-3. Copiar `.env.example` a `.env` y completar `SUPABASE_URL` y `SUPABASE_SECRET_KEY` con la URL del proyecto y su secret key de servidor.
+3. Configurar `SUPABASE_URL` y `SUPABASE_SECRET_KEY` en `.env`.
 4. Generar `JWT_SECRET` con `node -e "console.log(require('crypto').randomBytes(48).toString('base64url'))"` y guardarlo en `.env`. Usar `JWT_EXPIRES_IN=1h`.
 5. Ejecutar `npm ci` y luego `npm run dev`.
 
@@ -43,4 +43,4 @@ Validación Zod: título de 1 a 200 caracteres después de trim, descripción de
 
 La colección de 26 peticiones está en `postman/Tasks-API.postman_collection.json`. Sigue [POSTMAN.md](POSTMAN.md) para ejecutarla contra Supabase y tomar la captura para la entrega.
 
-`.env`, `node_modules` y los reportes que pueden contener tokens están excluidos de Git. La colección distribuida solo contiene datos ficticios de prueba.
+Los archivos de configuración de entorno, `node_modules` y los reportes que pueden contener tokens están excluidos de Git. La colección distribuida solo contiene datos ficticios de prueba.
