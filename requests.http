@@ -1,0 +1,84 @@
+# Extensión REST Client de VS Code. Ejecutar en orden.
+@base = http://localhost:3000/api
+@email = ana@test.com
+@password = supersecreta
+@token = {{login.response.body.$.accessToken}}
+@taskId = {{createTask.response.body.$.id}}
+
+### Health público
+GET {{base}}/health
+
+### Conexión de Supabase
+GET {{base}}/health/db
+
+### Sin token: 401
+GET {{base}}/tasks
+
+### Registrar: 201 (repetir: 409)
+POST {{base}}/auth/register
+Content-Type: application/json
+
+{ "email": "{{email}}", "password": "{{password}}" }
+
+### Login: guardar token
+# @name login
+POST {{base}}/auth/login
+Content-Type: application/json
+
+{ "email": "{{email}}", "password": "{{password}}" }
+
+### Usuario actual
+GET {{base}}/auth/me
+Authorization: Bearer {{token}}
+
+### Listar tareas
+GET {{base}}/tasks
+Authorization: Bearer {{token}}
+
+### Crear: guardar id
+# @name createTask
+POST {{base}}/tasks
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{ "title": "Preparar la demo", "description": "Ensayar cada paso" }
+
+### Obtener tarea creada
+GET {{base}}/tasks/{{taskId}}
+Authorization: Bearer {{token}}
+
+### Crear inválida: 400
+POST {{base}}/tasks
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{ "title": "" }
+
+### Actualizar
+PATCH {{base}}/tasks/{{taskId}}
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{ "done": true }
+
+### PATCH vacío: 400
+PATCH {{base}}/tasks/{{taskId}}
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{}
+
+### ID inválido: 400
+GET {{base}}/tasks/abc
+Authorization: Bearer {{token}}
+
+### Eliminar solo la tarea creada: 204 (repetir: 404)
+DELETE {{base}}/tasks/{{taskId}}
+Authorization: Bearer {{token}}
+
+### Token alterado: 401
+GET {{base}}/tasks
+Authorization: Bearer no-es-un-jwt
+
+### OpenAPI público
+GET {{base}}/docs/openapi.json
