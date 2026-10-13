@@ -7,7 +7,6 @@ import { createTasksService } from './tasks.service.js';
 import { createTasksController } from './tasks.controller.js';
 import { createTaskSchema, taskIdParams, updateTaskSchema } from './tasks.schema.js';
 
-// Composition root del módulo: aquí se arman las dependencias repository -> service -> controller.
 export function createTasksRouter(repository = createTasksRepository(supabase)) {
   const service = createTasksService(repository);
   const controller = createTasksController(service);

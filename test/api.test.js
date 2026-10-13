@@ -6,7 +6,7 @@ import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import SwaggerParser from '@apidevtools/swagger-parser';
 
-// Los tests nunca cargan .env ni acceden al proyecto real de Supabase.
+// Configuración de pruebas; no se carga .env.
 process.env.NODE_ENV = 'test';
 process.env.SUPABASE_URL = 'https://example.supabase.co';
 process.env.SUPABASE_SECRET_KEY = 'test-key';

@@ -1,6 +1,5 @@
 import { z } from 'zod';
 
-// Validamos la configuración al arrancar: si falta algo, fallamos rápido y con un mensaje claro.
 const envSchema = z.object({
   NODE_ENV: z.enum(['development', 'production', 'test']).default('development'),
   PORT: z.coerce.number().int().positive().default(3000),

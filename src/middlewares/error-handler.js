@@ -1,7 +1,6 @@
 import { env } from '../config/env.js';
 
-// Único lugar donde los errores se convierten en respuestas HTTP.
-// Express 5 envía aquí automáticamente los errores lanzados en handlers async.
+// Express 5 envía aquí los errores de los handlers async.
 export function errorHandler(err, _req, res, _next) {
   const status = err.status ?? 500;
   if (status >= 500) console.error(err);

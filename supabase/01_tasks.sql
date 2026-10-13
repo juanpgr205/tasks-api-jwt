@@ -1,4 +1,4 @@
--- Paso 1: tabla de tareas (ejecutar en Supabase → SQL Editor)
+-- Tabla de tareas.
 
 create table if not exists public.tasks (
   id          bigint generated always as identity primary key,
@@ -8,8 +8,7 @@ create table if not exists public.tasks (
   created_at  timestamptz not null default now()
 );
 
--- RLS activo y SIN políticas: nadie puede usar la tabla con la publishable key.
--- Solo nuestra API (con la secret key, que se salta RLS) tiene acceso.
+-- Sin políticas RLS: la API accede con service_role.
 alter table public.tasks enable row level security;
 grant select, insert, update, delete on public.tasks to service_role;
 

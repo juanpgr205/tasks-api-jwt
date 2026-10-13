@@ -1,6 +1,5 @@
 import { HttpError } from '../../utils/http-error.js';
 
-// Reglas de negocio. No sabe de Express ni de Supabase: solo usa el repositorio.
 export function createTasksService(repository) {
   return {
     list: () => repository.findAll(),

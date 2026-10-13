@@ -1,4 +1,3 @@
-// Traduce HTTP <-> servicio: lee req, llama al servicio y arma la respuesta. Nada más.
 export function createTasksController(service) {
   return {
     async list(_req, res) {

@@ -11,7 +11,7 @@ export function createUsersRepository(db) {
     async create({ email, passwordHash }) {
       const result = await db.from(TABLE).insert({ email, password_hash: passwordHash })
         .select('id, email, created_at').single();
-      // La restricción UNIQUE también protege dos registros simultáneos.
+      // Dos registros simultáneos pueden intentar usar el mismo email.
       if (result.error?.code === '23505') throw HttpError.conflict('El email ya está registrado');
       return unwrap(result);
     },

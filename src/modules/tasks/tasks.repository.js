@@ -1,7 +1,6 @@
 import { unwrap } from '../../lib/supabase.js';
 
-// Capa de acceso a datos: es el ÚNICO archivo del módulo que conoce Supabase.
-// Recibe el cliente por parámetro (inyección de dependencias): en los tests se puede pasar uno falso.
+// El cliente se inyecta para poder sustituirlo en las pruebas.
 const TABLE = 'tasks';
 const COLUMNS = 'id, title, description, done, created_at';
 

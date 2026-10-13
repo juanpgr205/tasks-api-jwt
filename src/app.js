@@ -5,7 +5,7 @@ import { createApiRouter } from './routes.js';
 import { notFound } from './middlewares/not-found.js';
 import { errorHandler } from './middlewares/error-handler.js';
 
-// Construye la app sin levantar el servidor (así se puede probar con supertest).
+// Se crea sin abrir un puerto para poder probarla con Supertest.
 export function createApp(dependencies = {}) {
   const app = express();
 
