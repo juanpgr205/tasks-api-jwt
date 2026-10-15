@@ -41,6 +41,6 @@ Validación Zod: título de 1 a 200 caracteres después de trim, descripción de
 
 `npm test` ejecuta diez pruebas con `node:test` y Supertest: registro/bcrypt, login, tokens válidos/alterados/vencidos, protección de todos los métodos, CRUD, validación, duplicados concurrentes y OpenAPI. Usan repositorios en memoria; no leen `.env` ni modifican Supabase.
 
-La colección de 26 peticiones está en `postman/Tasks-API.postman_collection.json`. Sigue [POSTMAN.md](POSTMAN.md) para ejecutarla contra Supabase y tomar la captura para la entrega.
+La colección de 26 peticiones está en `postman/Tasks-API.postman_collection.json`. Sigue [POSTMAN.md](POSTMAN.md) para ejecutarla contra Supabase.
 
 Los archivos de configuración de entorno, `node_modules` y los reportes que pueden contener tokens están excluidos de Git. La colección distribuida solo contiene datos ficticios de prueba.
